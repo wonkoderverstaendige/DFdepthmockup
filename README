@@ -1,0 +1,32 @@
+% BLA BLA BLA LEGAL STUFF %
+
+Purpose: Make mockup similar to the one posted by Mayday, automatically and with shaded slopes
+
+How: 
+
+1) Disect screenshots
+	- Tile batch of screenshots automatically 
+	- sort tiles into a dictionary
+
+2) Build representation
+	- find borders, find slope tiles (up/down)
+	- Create z-mask for combining
+	- get vector field for slopes (direction and context of surrounding slopes)
+	
+3) Order layers
+	- detect z-order based on numbers on lower right side/changes in area
+	- alt: find sky tile by uniformity, use sky tile by growing area for upper limits, find earth tiles for lower limits
+	
+4) Combine into single image
+	- binary masking alpha channel
+	- alt: tile by tile, only highest non-zero (sky) tile, shade by distance from highest (current) level
+		- Shade higher levels blueish, lower levels darkish?
+
+F) Fun things
+	? shadows based on date -> season indicator (doesn't make much sense, but then again, DF!)
+	? detect water slopes on blue content
+	? draw beaches
+	? draw water depth by shading with very dark blue->cyan
+
+
+
