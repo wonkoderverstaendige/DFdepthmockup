@@ -1,21 +1,27 @@
 % BLA BLA BLA LEGAL STUFF %
 
-Purpose: Make mockup similar to the one posted by Mayday, automatically and with shaded slopes
+Purpose: Make mockup similar to the one posted by Mayday (http://www.bay12forums.com/smf/index.php?topic=41266.0), automatically and with shaded slopes
 
 How: 
 
 1) Disect screenshots
+    - crop if necessary
+        - check for repetitions -> tile size
 	- Tile batch of screenshots automatically 
 	- sort tiles into a dictionary
+		- normalize tiles into ascending palette (independent of shading)
+		- alt: use a provided tileset file
 
 2) Build representation
 	- find borders, find slope tiles (up/down)
 	- Create z-mask for combining
 	- get vector field for slopes (direction and context of surrounding slopes)
+		- slopes: linear, cos(0-pi)
 	
 3) Order layers
 	- detect z-order based on numbers on lower right side/changes in area
 	- alt: find sky tile by uniformity, use sky tile by growing area for upper limits, find earth tiles for lower limits
+	- alt: start with sky, where sky replaced, next layer is ground/something, trace full stack down, ascending by level of sky tiles
 	
 4) Combine into single image
 	- binary masking alpha channel
